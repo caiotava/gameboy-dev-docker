@@ -3,6 +3,7 @@ build-docker-image:
 
 docker-push:
 	docker push caiotava/gameboy-dev${VERSION}
+	docker push caiotava/gameboy-dev
 
 .PHONY: build-docker-image  docker-push
 
