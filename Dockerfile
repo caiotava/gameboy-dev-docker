@@ -14,6 +14,7 @@ RUN set -eux; \
         wget \
         curl \
         git \
+        golang \
     ; \
     rm -rf /var/lib/apt/lists/*
 
@@ -46,6 +47,13 @@ RUN set -eux; \
     cp bmp2cgb /usr/local/bin;
 
 RUN set -eux; \
+    wget -O /tmp/gbdk-go.tar.gz https://github.com/caiotava/gbdk-go/archive/refs/heads/master.tar.gz; \
+    tar -xvf /tmp/gbdk-go.tar.gz -C /tmp/; \
+    cd /tmp/gbdk-go-master; \
+    make build; \
+    cp go2c gbdkgo /opt/gbdk/bin;
+
+RUN set -eux; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
 
@@ -53,3 +61,4 @@ RUN rm -rf /tmp/*;
 
 ENV GBDKDIR /opt/gbdk/
 ENV PATH /opt/gbdk/bin:$PATH
+ENV PATH /root/go/bin:$PATH
