@@ -47,9 +47,9 @@ RUN set -eux; \
     cp bmp2cgb /usr/local/bin;
 
 RUN set -eux; \
-    wget -O /tmp/gbdk-go.tar.gz https://github.com/caiotava/gbdk-go/archive/refs/heads/master.tar.gz; \
+    wget -O /tmp/gbdk-go.tar.gz https://github.com/caiotava/gbdk-go/archive/refs/heads/upgrate-to-use-new-gbdk-2020.tar.gz; \
     tar -xvf /tmp/gbdk-go.tar.gz -C /tmp/; \
-    cd /tmp/gbdk-go-master; \
+    cd /tmp/gbdk-go-upgrate-to-use-new-gbdk-2020; \
     make build; \
     cp go2c gbdkgo /opt/gbdk/bin;
 
